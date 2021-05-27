@@ -1,3 +1,6 @@
+<?php
+echo "test";
+?>
 <!doctype html>
 <html>
 <head>
@@ -8,7 +11,8 @@
 </head>
 <body>
 
-<?php echo "salut"?>
+<?php echo "<p style='color: red'>salut</p>"?>
+
 
 
 
