@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
 <h2>Met ton age</h2>
 <form method="get">
     <input type="ageform" name="ageform" id="ageform" placeholder="ton age" class="col align-self-center" required><br/>
     <input type="submit" name="formsend" id="formsend" value="Envoyer" class="btn btn-primary">
 </form>
+
 <?php
 $age = $_GET['ageform'];
 
