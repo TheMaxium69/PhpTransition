@@ -10,17 +10,31 @@
 
 <h2>Met ton age</h2>
 <form method="get">
+    <input type="prenomform" name="prenomform" id="prenomform" placeholder="ton prenom" class="col align-self-center" required><br/>
     <input type="ageform" name="ageform" id="ageform" placeholder="ton age" class="col align-self-center" required><br/>
     <input type="submit" name="formsend" id="formsend" value="Envoyer" class="btn btn-primary">
 </form>
 
 <?php
+$prenom = $_GET['prenomform'];
 $age = $_GET['ageform'];
-
-$prenom = "Bob";
 
 $user = array("prenom" => $prenom,
               "age" => $age);
+
+$lesgensquejeconnais = array(
+    "michel",
+    "rober",
+    "maxime"
+);
+
+if (in_array($user["prenom"], $lesgensquejeconnais)){
+    $textCoco = "je te connais";
+}else{
+    $textCoco = "je te connais pas";
+}
+
+
 
 if($user['age'] >= 18){
         echo '<div class="card" style="width: 18rem;">
@@ -28,6 +42,7 @@ if($user['age'] >= 18){
   <div class="card-body">
     <h5 class="card-title">MAJEUR</h5>
     <p class="card-text">'. $user['prenom'] .' tu est majeur car tu a '. $user['age'] .'</p>
+    <p>'. $textCoco .'</p>
   </div>
 </div>';
 
@@ -37,6 +52,7 @@ if($user['age'] >= 18){
   <div class="card-body">
     <h5 class="card-title">MINEUR</h5>
     <p class="card-text">'. $user['prenom'] .' tu est mineur car tu a '. $user['age'] .'</p>
+    <p>'. $textCoco .'</p>
   </div>
 </div>';
 }
