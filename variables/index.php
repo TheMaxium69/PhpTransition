@@ -3,11 +3,11 @@ $Tableau = ["dauphin", 67, "choucroute", false];
 echo $Tableau[2]. "<br>";
 
 //Add Push
-array_push($Tableau, "test");
+array_push($Tableau, "testPush");
 echo $Tableau[4]. "<br>";
 
 //Add Simple
-$Tableau[5] = "TEST3";
+$Tableau[] = "testSimple";
 echo $Tableau[5]. "<br>";
 
 //Affichage
