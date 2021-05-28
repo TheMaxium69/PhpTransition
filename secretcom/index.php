@@ -22,22 +22,27 @@ $unForm = '<form method="get" class="row g-3">
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="btn btn-success">OK</button>
-                </div>
+                </div>  
            </form>';
 $pseudo = "pascale";
 $password = "carrotte";
+$utilisateurs = array(
+    $pseudo => $password,
+    'bob' => "dauphin",
+    'patricia' => "camenbert",
+    'magali' => "pterodactyle",
+);
 
 
 if(isset($_GET['pass']) && isset($_GET['psd']) && $_GET['pass'] == $password && $_GET['psd'] == $pseudo){
     echo "[debug] Get Existe". "<br>";
-    echo "[debug] Pseudo bon". "<br>";
+    echo "[debug] nyPseudo bon". "<br>";
     echo "[debug] Mot de passe bon". "<br>";
     $modeForm = !$modeForm;
     $modeRevelation = true;
 }else{
     if (isset($_GET['pass']) && isset($_GET['psd'])){
     }else{
-        echo "[debug] Get Existe Pas". "<br>";
         echo "[debug] Tu na pas remplie tout les champs". "<br>";
     }
     if (isset($_GET['pass']) && $_GET['pass'] != $password){
