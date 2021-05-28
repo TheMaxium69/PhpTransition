@@ -32,8 +32,10 @@ $utilisateurs = array(
     'patricia' => "camenbert",
     'magali' => "pterodactyle",
 );
+$btnDeco = '<a type="button" class="btn btn-danger" style="color: white" href="/PhpTransition/secretcom">Deconnexion</a>';
+$modebtn = false;
 
-
+/*
 if(isset($_GET['pass']) && isset($_GET['psd']) && $_GET['pass'] == $password && $_GET['psd'] == $pseudo){
     echo "[debug] Get Existe". "<br>";
     echo "[debug] nyPseudo bon". "<br>";
@@ -51,12 +53,30 @@ if(isset($_GET['pass']) && isset($_GET['psd']) && $_GET['pass'] == $password && 
     if (isset($_GET['psd']) && $_GET['psd'] != $pseudo){
         echo "[debug] Pseudo pas bon". "<br>";
     }
+}*/
+
+if(isset($_GET['pass']) && isset($_GET['psd'])){
+    $key = array_search($utilisateurs[$_GET['psd']], $utilisateurs);
+    if($key == true) {
+        echo "[debug] Pseudo Compris". "<br>";
+        if($_GET['pass'] == $utilisateurs[$_GET['psd']]){
+            echo "[debug] Mot de passe GOOD". "<br>";
+            $modeForm = !$modeForm;
+            $modeRevelation = true;
+        }else {
+
+            echo "[debug] Mot de passe pas bon" . "<br>";
+        }
+    }else{
+        echo "[debug] Pseudo pas dans la base de donnée". "<br>";
+    }
 }
 
 if($modeRevelation){
     echo "[debug] Vrai tu peut voir le secret". "<br>";
     $revelation = $secret;
     $modeForm = false;
+    $modebtn = true;
 }else {
     echo "[debug] Faux tu peut pas voir le secret". "<br>";
 }
@@ -68,12 +88,20 @@ if(!$modeForm){
     echo "[debug] Activé le formulaire". "<br>";
 }
 
+if(!$modebtn){
+    echo "[debug] Désactivé le btn". "<br>";
+    $btnDeco = "";
+}else {
+    echo "[debug] Activé le btn". "<br>";
+}
+
 ?>
 </div>
 <br>
 
 <?php echo $revelation;
-      echo $unForm;?>
+      echo $unForm;
+      echo $btnDeco;?>
 <hr>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
