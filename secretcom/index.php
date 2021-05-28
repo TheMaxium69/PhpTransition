@@ -11,8 +11,17 @@
 <?php
 $modeRevelation = false;
 $modeForm = true;
+$modebtn = false;
 $secret = "le sens de la vie c'est       ";
 $revelation = "c'est à cet endroit que le secret devrait être revelé";
+$pseudo = "pascale";
+$password = "carrotte";
+$utilisateurs = array(
+    $pseudo => $password,
+    'bob' => "dauphin",
+    'patricia' => "camenbert",
+    'magali' => "pterodactyle",
+);
 $unForm = '<form method="get" class="row g-3">
                 <div class="col-auto">
                     <input type="text" class="form-control" name="psd" id="" placeholder="votre pseudo">
@@ -24,16 +33,11 @@ $unForm = '<form method="get" class="row g-3">
                     <button type="submit" class="btn btn-success">OK</button>
                 </div>  
            </form>';
-$pseudo = "pascale";
-$password = "carrotte";
-$utilisateurs = array(
-    $pseudo => $password,
-    'bob' => "dauphin",
-    'patricia' => "camenbert",
-    'magali' => "pterodactyle",
-);
-$btnDeco = '<a type="button" class="btn btn-danger" style="color: white" href="/PhpTransition/secretcom">Deconnexion</a>';
-$modebtn = false;
+$formDeco = '<form class="row g-3">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">Déconexion</button>
+                </div>  
+             </form>';
 
 /*
 if(isset($_GET['pass']) && isset($_GET['psd']) && $_GET['pass'] == $password && $_GET['psd'] == $pseudo){
@@ -90,7 +94,7 @@ if(!$modeForm){
 
 if(!$modebtn){
     echo "[debug] Désactivé le btn". "<br>";
-    $btnDeco = "";
+    $formDeco = "";
 }else {
     echo "[debug] Activé le btn". "<br>";
 }
@@ -101,7 +105,7 @@ if(!$modebtn){
 
 <?php echo $revelation;
       echo $unForm;
-      echo $btnDeco;?>
+      echo $formDeco;?>
 <hr>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
