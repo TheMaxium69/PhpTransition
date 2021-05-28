@@ -7,22 +7,42 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-
+<div style="background-color: black; color: white">
 <?php
 $modeRevelation = false;
+$modeForm = true;
 $secret = "le sens de la vie c'est       ";
 $revelation = "c'est à cet endroit que le secret devrait être revelé";
+$unForm = '<form class="row g-3">
+                <div class="col-auto">
+                    <input type="text" class="form-control" id="" placeholder="Mot de passe">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">OK</button>
+                </div>
+           </form>';
 
-if(!$modeRevelation){
-    echo "[debug] faux". "<br>";
-}else {
-    echo "[debug] vrai". "<br>";
+
+if($modeRevelation){
+    echo "[debug] Vrai tu peut voir le secret". "<br>";
     $revelation = $secret;
+    $modeForm = !$modeForm;
+}else {
+    echo "[debug] Faux tu peut pas voir le secret". "<br>";
+}
+
+if(!$modeForm){
+    echo "[debug] Désactivé le formulaire". "<br>";
+    $unForm = "";
+}else {
+    echo "[debug] Activé le formulaire". "<br>";
 }
 ?>
+</div>
+<br>
 
-<hr>
 <?php echo $revelation; ?>
+<?php echo $unForm; ?>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
