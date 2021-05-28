@@ -15,27 +15,37 @@ $secret = "le sens de la vie c'est       ";
 $revelation = "c'est à cet endroit que le secret devrait être revelé";
 $unForm = '<form method="get" class="row g-3">
                 <div class="col-auto">
+                    <input type="text" class="form-control" name="psd" id="" placeholder="votre pseudo">
+                </div>
+                <div class="col-auto">
                     <input type="text" class="form-control" name="pass" id="" placeholder="Mot de passe">
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="btn btn-success">OK</button>
                 </div>
            </form>';
+$pseudo = "pascale";
 $password = "carrotte";
 
 
-if(isset($_GET['pass'])){
+if(isset($_GET['pass']) && isset($_GET['psd']) && $_GET['pass'] == $password && $_GET['psd'] == $pseudo){
     echo "[debug] Get Existe". "<br>";
+    echo "[debug] Pseudo bon". "<br>";
+    echo "[debug] Mot de passe bon". "<br>";
     $modeForm = !$modeForm;
-
-    if($_GET['pass'] == $password){
-        echo "[debug] Mot de passe bon". "<br>";
-        $modeRevelation = true;
+    $modeRevelation = true;
+}else{
+    if (isset($_GET['pass']) && isset($_GET['psd'])){
     }else{
+        echo "[debug] Get Existe Pas". "<br>";
+        echo "[debug] Tu na pas remplie tout les champs". "<br>";
+    }
+    if (isset($_GET['pass']) && $_GET['pass'] != $password){
         echo "[debug] Mot de passe pas bon". "<br>";
     }
-}else{
-    echo "[debug] Get Existe Pas". "<br>";
+    if (isset($_GET['psd']) && $_GET['psd'] != $pseudo){
+        echo "[debug] Pseudo pas bon". "<br>";
+    }
 }
 
 if($modeRevelation){
