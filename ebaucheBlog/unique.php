@@ -61,13 +61,12 @@
 
             foreach ($result2 as $key2 => $value2) {
             ?>
-    <div class="card" style="width: 18rem;">
-        <!--<img src="" class="card-img-top" alt="">-->
-        <div class="card-body">
-            <h5 class="card-title"><?php echo $value2['id']; ?> : <?php echo $value2['title']; ?></h5>
-            <p class="card-text"><?php echo $value2['content']; ?></p>
-        </div>
-    </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $value2['id']; ?> : <?php echo $value2['title']; ?></h5>
+                    <p class="card-text"><?php echo $value2['content']; ?></p>
+                </div>
+            </div>
     <?php
     }
     }
