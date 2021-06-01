@@ -24,6 +24,11 @@
         </div>
     </nav>
     </nav>
+    <?php if( isset($_GET['info']) && $_GET['info'] == 'edit' ){?>
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button><strong>Bravo!</strong> You successfully posted <a href="#" class="alert-link">a edit article</a>.
+        </div>
+    <?php } ?>
 
     <div class="container">
 
@@ -38,6 +43,9 @@
 
             <div class="row">
               <a href="edit.php?postId=<?php echo $value['id'];?>" class="btn btn-primary">Editer cet article</a>
+            </div>
+            <div class="row">
+                <a href="home.php" class="btn btn-primary">Home</a>
             </div>
        <?php }?>
 

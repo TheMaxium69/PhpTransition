@@ -30,31 +30,23 @@
     <div class="">
         <?php
         if (isset($_GET['postId']) ){
-        foreach($leResultatDeMaRequeteArticleUnique as $value){
-            $IdEdit = $value['id'];?>
+        foreach($leResultatDeMaRequeteArticleUnique as $value){?>
 
 
             <form action="">
-
+                <input type="hidden" name="idEdite" value="<?php echo $value['id'] ?>">
                 <input class="form-control" type="text" name="titreEdite" id="" value="<?php echo $value['title'] ?>" placeholder="votre titre">
                 <textarea class="form-control" name="texteEdite" id="" cols="30" rows="10" placeholder="votre texte"><?php echo $value['content'] ?></textarea>
                 <input class="form-control btn btn-success" type="submit" value="Poster">
 
+                <div class="row">
+                    <a href="index.php?suppId=<?php echo $value['id'];?>" class="btn btn-danger">Supprimé cet article</a>
+                </div>
+
 
 
             </form>
-        <?php }}
-
-        if ( isset($_GET['titreEdite']) && isset($_GET['texteEdite'])){
-            $editTitre = $_GET['titreEdite'];
-            $editText = $_GET['texteEdite'];
-
-            $maRequeteArticleUnique = "UPDATE `post` SET `title`='$editTitre',`content`='$editText' WHERE id='$IdEdit'";
-
-            $leResultatDeMaRequeteArticleEdit = mysqli_query($maConnection, $maRequeteArticleUnique);
-
-        }
-        ?>
+        <?php }} ?>
 
     </div>
 </div>

@@ -1,7 +1,5 @@
 <div style="background-color: black; color: white;"><?php
 
-    echo "[MENU DE DEBUG] <br>";
-
 $unHote = "localhost";
 $nomUtilisateurDB = "ebauche";
 $motDePasseUserDB = "test";
@@ -34,7 +32,6 @@ if ( isset($_GET['name']) && isset($_GET['description'])){
         $result = mysqli_query($maConnection, $maRequete);
         if($result == true){
             header('Location: index.php?info=added');
-            $temp = 1;
 
         }
     }else{
@@ -59,7 +56,27 @@ if(  isset($_GET['postId'])  ){
 }
 
 
+    if ( isset($_GET['titreEdite']) && isset($_GET['texteEdite'])){
+        $editTitre = $_GET['titreEdite'];
+        $editText = $_GET['texteEdite'];
+        $editId = $_GET['idEdite'];
 
+        $maRequeteArticleUnique = "UPDATE `post` SET `title`='$editTitre',`content`='$editText' WHERE id='$editId'";
+
+        $leResultatDeMaRequeteArticleEdit = mysqli_query($maConnection, $maRequeteArticleUnique);
+        header('Location: unique.php?postId='. $editId .'&info=edit');
+
+    }
+
+    if ( isset($_GET['suppId'])){
+        $suppId = $_GET['suppId'];
+
+        $maRequeteArticleDel = "DELETE FROM `post` WHERE id='$suppId'";
+
+        $leResultatDeMaRequeteArticleSupp = mysqli_query($maConnection, $maRequeteArticleDel);
+        header('Location: index.php?info=sup');
+
+    }
 
 
 
