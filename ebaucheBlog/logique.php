@@ -61,21 +61,6 @@ if(  isset($_GET['postId'])  ){
 
 
 
-if ( isset($_GET['editid'])){
-            $idArticle = $_GET['editid'];
-            $activeForm = 1;
-
-
-    $maRequeteArticleUnique = "SELECT * FROM post WHERE id=$idArticle";
-
-    $leResultatDeMaRequeteArticleEdit = mysqli_query($maConnection, $maRequeteArticleUnique);
-
-
-
-    }
-
-
-
 
 
 

@@ -34,10 +34,13 @@
         foreach($leResultatDeMaRequeteArticleUnique as $value){
             echo $value["title"];
             echo "<br>";
-            echo $value['content'];
-        }?>
+            echo $value['content'];?>
 
-        <a class="btn btn-outline-dark" href="edit.php?editid=<?php echo $value['id']?>"> edit</a>
+            <div class="row">
+              <a href="edit.php?postId=<?php echo $value['id'];?>" class="btn btn-primary">Editer cet article</a>
+            </div>
+       <?php }?>
+
     </div>
 
 

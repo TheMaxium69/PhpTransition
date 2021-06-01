@@ -2,8 +2,8 @@
 
 
     $unHote = "localhost";
-    $nomUtilisateurDB = "ebauche";
-    $motDePasseUserDB = "test";
+    $nomUtilisateurDB = "bloggeur";
+    $motDePasseUserDB = "coucou";
     $nomDatabase = "ebaucheblog";
 
  //Tester la bonne connection à la base
@@ -21,18 +21,35 @@
     die();
     
     }
+    //creation d'article
 
+    if( isset($_GET['nouveauTitre']) && isset($_GET['nouveauTexte']) ){
+            if( $_GET['nouveauTitre'] !== "" && $_GET['nouveauTexte'] !== "" ){
+                    $nouveauTitre = $_GET['nouveauTitre'];
+                    $nouveauTexte = $_GET['nouveauTexte'];
+
+                    $maRequete = "INSERT INTO posts(title, content) VALUES ('$nouveauTitre', '$nouveauTexte')";
+                     
+                     $leResultatDeMonAjoutArticle = mysqli_query($maConnection, $maRequete);
+                     header("Location: index.php?info=added");
+                  }
+         else{
+            echo "remplis ton formulaire en entier";
+         }
+           
+    }
+    
     //effectuer une requete pour un article spécifique:
      if(  isset($_GET['postId'])  ){
 
             $postId = $_GET['postId'];
 
-             $maRequeteArticleUnique = "SELECT * FROM post WHERE id=$postId";
+             $maRequeteArticleUnique = "SELECT * FROM posts WHERE id=$postId";
 
              $leResultatDeMaRequeteArticleUnique = mysqli_query($maConnection, $maRequeteArticleUnique);
      }else{    //effectuer une requete SQL pour récupérer TOUS les posts
 
-        $maRequete = "SELECT * FROM post";
+        $maRequete = "SELECT * FROM posts";
 
         $leResultatDeMaRequete = mysqli_query($maConnection, $maRequete);
 

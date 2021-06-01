@@ -1,4 +1,5 @@
-<?php include "logique.php"?>
+
+<?php require "logique.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,12 +7,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Créer un nouveau post</title>
     <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.css">
+
 </head>
 <body>
-   
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/hb/ebaucheBlog">Navbar</a>
@@ -53,54 +53,22 @@
     </div>
   </div>
 </nav>
-
-    <div class="container mt-5">
-
-
-
-   
-  <div class="container">
-  
-  
-  
-
-<?php
-    foreach($leResultatDeMaRequeteArticleUnique as $value){?>
-                  
-                  <div class="row text-center">
-                  
-                    <h2><?php echo $value["title"];?></h2>
-                  
-                  
-                  </div>
-                  
-                  <div class="text-center">
-                      <p><?php echo $value['content'];?></p>
-                  </div>
-                  
+            <div class="container">
+                
+                    <form action="">
                     
-                   
-                   
-            
-    </div>
-    </div>
+                    <input class="form-control" type="text" name="nouveauTitre" id="" placeholder="votre titre">
+                    <textarea class="form-control" name="nouveauTexte" id="" cols="30" rows="10" placeholder="votre texte"></textarea>
+                    <input class="form-control btn btn-success" type="submit" value="Poster">
+                        
+                    
+                    
+                    </form>
 
-            <div class="row">
-            
-              <a href="edition.php?postId=<?php echo $value['id'];?>" class="btn btn-primary">Editer cet article</a>
-            
+
+               
             </div>
-<?php }?>
 
-    <div class="row">
-    
-            <a href="/hb/ebaucheBlog" class="btn btn-danger">Retour a l'accueil</a>
-    </div>
-    
-    
-    
-    
-    
-    
+
 </body>
 </html>

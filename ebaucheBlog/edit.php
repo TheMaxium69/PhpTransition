@@ -24,27 +24,40 @@
         </div>
     </nav>
     </nav>
+</header>
+
+<div class="container">
+    <div class="">
+        <?php
+        if (isset($_GET['postId']) ){
+        foreach($leResultatDeMaRequeteArticleUnique as $value){
+            $IdEdit = $value['id'];?>
 
 
-    <?php
+            <form action="">
 
-    if($activeForm == 1){
+                <input class="form-control" type="text" name="titreEdite" id="" value="<?php echo $value['title'] ?>" placeholder="votre titre">
+                <textarea class="form-control" name="texteEdite" id="" cols="30" rows="10" placeholder="votre texte"><?php echo $value['content'] ?></textarea>
+                <input class="form-control btn btn-success" type="submit" value="Poster">
 
-        foreach ($leResultatDeMaRequeteArticleEdit as $value) {
 
-            echo '
-    <form style="padding: 40px">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Name de larticle</label>
-            <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="'.$value["title"].'">
-            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="'.$value["content"].'"></textarea>
-            <button type="submit" class="btn btn-dark" style="margin-top: 10px;">Submit</button>
-        </div>
-    </form>';
-            }
-    }
-    ?>
+
+            </form>
+        <?php }}
+
+        if ( isset($_GET['titreEdite']) && isset($_GET['texteEdite'])){
+            $editTitre = $_GET['titreEdite'];
+            $editText = $_GET['texteEdite'];
+
+            $maRequeteArticleUnique = "UPDATE `post` SET `title`='$editTitre',`content`='$editText' WHERE id='$IdEdit'";
+
+            $leResultatDeMaRequeteArticleEdit = mysqli_query($maConnection, $maRequeteArticleUnique);
+
+        }
+        ?>
+
+    </div>
+</div>
 
 
 
