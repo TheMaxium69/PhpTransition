@@ -37,12 +37,12 @@
 
                 <div class="col-4">
 
-                    <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
                         <div class="card-header"><?php echo $post["title"]; ?></div>
                         <div class="card-body">
                             <p class="card-text"><?php echo $post["content"]; ?></p>
                         </div>
-                        <a href="unique.php?postId=<?php echo $post['id'] ?>" class="btn btn-success">Aller à l'article</a>
+                        <a href="unique.php?postId=<?php echo $post['id'] ?>" class="btn btn-primary">Aller à l'article</a>
                     </div>
 
 

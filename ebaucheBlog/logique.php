@@ -26,13 +26,22 @@ if(!$maConnection){
 if ( isset($_GET['name']) && isset($_GET['description'])){
 
     if( $_GET['name'] !== "" && $_GET['description'] !== "" ) {
-        echo "hey bg ta reussi";
+        $newTitre = $_GET['name'];
+        $newDesc = $_GET['description'];
 
+        $maRequete = "INSERT INTO post(`title`, `content`) VALUES ('$newTitre', '$newDesc')";
 
+        $result = mysqli_query($maConnection, $maRequete);
+        if($result == true){
+            header('Location: index.php');
+            $temp = 1;
+
+        }
     }else{
         echo "remplie formulaire";
     }
 }
+
 
 //effectuer une requete pour un article spécifique:
 if(  isset($_GET['postId'])  ){
@@ -53,12 +62,6 @@ if(  isset($_GET['postId'])  ){
 
 
 }
-
-
-
-
-
-
 
 
 
