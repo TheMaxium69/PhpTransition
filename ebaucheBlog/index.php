@@ -25,6 +25,13 @@
         </div>
     </nav>
 
+    <?php if( isset($_GET['info']) && $_GET['info'] == 'added' ){?>
+
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button><strong>Bravo!</strong> You successfully posted <a href="#" class="alert-link">a new article</a>.
+        </div>
+    <?php } ?>
+
     <div class="container">
 
 

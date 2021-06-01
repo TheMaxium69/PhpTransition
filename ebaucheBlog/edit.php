@@ -25,21 +25,26 @@
     </nav>
     </nav>
 
-    <div class="container">
 
+    <?php
 
+    if($activeForm == 1){
 
-        <h1>c'est ici qu'on peut lire un article en entier</h1>
-        <?php
-        foreach($leResultatDeMaRequeteArticleUnique as $value){
-            echo $value["title"];
-            echo "<br>";
-            echo $value['content'];
-        }?>
+        foreach ($leResultatDeMaRequeteArticleEdit as $value) {
 
-        <a class="btn btn-outline-dark" href="edit.php?editid=<?php echo $value['id']?>"> edit</a>
-    </div>
-
+            echo '
+    <form style="padding: 40px">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name de larticle</label>
+            <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="'.$value["title"].'">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="'.$value["content"].'"></textarea>
+            <button type="submit" class="btn btn-dark" style="margin-top: 10px;">Submit</button>
+        </div>
+    </form>';
+            }
+    }
+    ?>
 
 
 

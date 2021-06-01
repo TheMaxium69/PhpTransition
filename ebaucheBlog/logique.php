@@ -33,7 +33,7 @@ if ( isset($_GET['name']) && isset($_GET['description'])){
 
         $result = mysqli_query($maConnection, $maRequete);
         if($result == true){
-            header('Location: index.php');
+            header('Location: index.php?info=added');
             $temp = 1;
 
         }
@@ -56,16 +56,23 @@ if(  isset($_GET['postId'])  ){
     $maRequete = "SELECT * FROM post";
 
     $leResultatDeMaRequete = mysqli_query($maConnection, $maRequete);
-
-
-
-
-
 }
 
 
 
 
+if ( isset($_GET['editid'])){
+            $idArticle = $_GET['editid'];
+            $activeForm = 1;
+
+
+    $maRequeteArticleUnique = "SELECT * FROM post WHERE id=$idArticle";
+
+    $leResultatDeMaRequeteArticleEdit = mysqli_query($maConnection, $maRequeteArticleUnique);
+
+
+
+    }
 
 
 
@@ -75,4 +82,9 @@ if(  isset($_GET['postId'])  ){
 
 
 
-?></div>
+
+
+
+
+
+    ?></div>
