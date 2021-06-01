@@ -1,23 +1,7 @@
-<div style="background: black; color: white;"><?php
-    $host = "localhost";
-    $userDB = "ebauche";
-    $passDB = "test";
-    $Database = "ebaucheblog";
 
-    $ConnectDB = mysqli_connect($host, $userDB, $passDB, $Database);
+<?php include "logique.php"?>
 
-    if(!$ConnectDB){
 
-        echo '<div class="alert alert-danger" role="alert">
-            Ta un souci de base de donné
-        </div>';
-
-        die();
-    }else{
-
-        echo "[debug] bien-connect" . "<br>";
-    }
-    ?></div>
 
 <!doctype html>
 <html lang="fr">
@@ -40,60 +24,24 @@
             </form>
         </div>
     </nav>
-    <?php
-    if($_GET == true){
-        $requete = "SELECT * FROM post where id=". $_GET['id'];
-        $result = mysqli_query($ConnectDB, $requete);
-        foreach ($result as $key => $value) {
-            ?>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $value['id']; ?> : <?php echo $value['title']; ?></h5>
-                    <p class="card-text"><?php echo $value['content']; ?></p>
-                </div>
-            </div>
-            <?php
-        }
-    }else{
-            $requete2 = "SELECT * FROM post";
+    </nav>
 
-            $result2 = mysqli_query($ConnectDB, $requete2);
+    <div class="container">
 
-            foreach ($result2 as $key2 => $value2) {
-            ?>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $value2['id']; ?> : <?php echo $value2['title']; ?></h5>
-                    <p class="card-text"><?php echo $value2['content']; ?></p>
-                </div>
-            </div>
-    <?php
-    }
-    }
+
+
+        <h1>c'est ici qu'on peut lire un article en entier</h1>
+        <?php
+        foreach($leResultatDeMaRequeteArticleUnique as $value){
+            echo $value["title"];
+            echo "<br>";
+            echo $value['content'];
+        }?>
+    </div>
 
 
 
 
-
-
-
-
-    ?>
-
-    <hr>
-    <form method="get" class="row g-3">
-        <div class="col-auto">
-            <input type="text" class="form-control" name="id" id="" placeholder="Id">
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-success">OK</button>
-        </div>
-    </form>
-    <form class="row g-3">
-        <div class="col-auto">
-            <button type="submit" class="btn btn-danger">All</button>
-        </div>
-    </form>'
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
